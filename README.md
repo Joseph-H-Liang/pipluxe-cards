@@ -11,7 +11,7 @@ Double-click `start.bat` or open `index.html` in Chrome / Edge.
 ## Pricing
 
 - **$5** single open
-- **$20** for 5 opens (silent Abyss Eye guarantee on one of the five)
+- **$20** for 5 opens (silent JP Pack guarantee on one of the five)
 - Target ~**20% margin** (~80% RTP) on prize COGS
 
 ## Prize ladder
@@ -19,8 +19,8 @@ Double-click `start.bat` or open `index.html` in Chrome / Edge.
 | Prize | Value |
 |-------|------:|
 | Sticker | $0.25 |
-| JP Abyss Eye pack (floor) | $5 |
-| PB/CB pack | $8 |
+| JP Pack (floor) | $5 |
+| Eng Pack | $8 |
 | PB 3-pack | $24 |
 | Choose a Pokémon Funko | $26 |
 | PB/CB booster bundle | $50 |
@@ -29,8 +29,6 @@ Double-click `start.bat` or open `index.html` in Chrome / Edge.
 | Ascended Heroes bundle | $100 |
 | Shining Fates tin | $80 |
 | PB booster box | $260 |
-
-PB/CB = Pitch Black / Chaos Rising pack type.
 
 ## Tweak
 

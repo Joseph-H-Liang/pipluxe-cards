@@ -19,7 +19,7 @@ CM.PRICES = {
   sixPack: 20,
 };
 
-/** Silent package inject — Abyss Eye floor (not advertised in player-facing copy). */
+/** Silent package inject — JP Pack floor (not advertised in player-facing copy). */
 CM.PACKAGE_GUARANTEE = "abyss";
 
 /** Paid win tiers (excludes sticker consolation + free-play bonus). */
@@ -61,10 +61,10 @@ CM.PRIZES = [
   },
   {
     id: "abyss",
-    name: "JP Abyss Eye Pack",
-    short: "ABYSS",
+    name: "JP Pack",
+    short: "JP PACK",
     handTo: "Hand them: 1 JP Abyss Eye pack",
-    blurb: "Japanese Abyss Eye",
+    blurb: "Abyss Eye",
     cogs: 5,
     msrp: 5,
     cssClass: "prize-abyss",
@@ -72,10 +72,10 @@ CM.PRIZES = [
   },
   {
     id: "pbpack",
-    name: "PB/CB Pack",
-    short: "PB/CB",
-    handTo: "Hand them: 1 Pitch Black / Chaos Rising pack",
-    blurb: "PB or CB booster",
+    name: "Eng Pack",
+    short: "ENG PACK",
+    handTo: "Hand them: 1 CB/PB pack",
+    blurb: "CB/PB",
     cogs: 8,
     msrp: 8,
     cssClass: "prize-pbpack",
@@ -210,7 +210,7 @@ CM.MISS_CHANCE = CM.STICKER_CHANCE; // legacy alias
 
 /**
  * Full tables (include sticker) for package companions + free follow-ups.
- * Silent guarantee injects Abyss Eye separately (not shown in UI copy).
+ * Silent guarantee injects JP Pack separately (not shown in UI copy).
  */
 CM.PACKAGE_WEIGHTS = {
   sticker: 7900,
@@ -324,7 +324,7 @@ CM.rollOutcome = function (opts) {
 };
 
 /**
- * Pre-roll a package: companions + 1 silent guaranteed Abyss Eye.
+ * Pre-roll a package: companions + 1 silent guaranteed JP Pack.
  * Bonus can land on any paid seat including the guarantee.
  */
 CM.rollPackage = function () {

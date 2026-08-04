@@ -102,24 +102,21 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    var(--theme-accent, var(--accent)),
-    var(--theme-accent-2, var(--accent-2)) 55%,
-    color-mix(in srgb, var(--accent) 55%, #000)
-  );
+  background:
+    url("../assets/brand/pipluxe-mascot.png") center / cover no-repeat,
+    linear-gradient(
+      135deg,
+      var(--theme-accent, var(--accent)),
+      var(--theme-accent-2, var(--accent-2)) 55%,
+      color-mix(in srgb, var(--accent) 55%, #000)
+    );
   box-shadow: 0 10px 24px var(--theme-glow);
   position: relative;
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  border-radius: 8px;
-  transform: rotate(12deg);
+  display: none;
 }
 
 .brand-name {
@@ -1603,33 +1600,65 @@ body {
   color: var(--ink-soft);
 }
 
-/* Left theme performance board (cosmetic) */
+/* Left Pipluxe mascot rail */
 .theme-rail {
   position: absolute;
   top: 50%;
   left: max(8px, env(safe-area-inset-left, 0px));
   transform: translateY(-50%);
   z-index: 4;
-  width: 148px;
+  width: 168px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
-  padding: 10px 8px;
-  border-radius: 18px;
+  padding: 14px 10px 12px;
+  border-radius: 22px;
   background:
     linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--accent) 10%, white),
-      color-mix(in srgb, var(--accent) 6%, rgba(247, 251, 249, 0.94))
+      165deg,
+      color-mix(in srgb, var(--accent) 14%, white),
+      color-mix(in srgb, #c4b5fd 18%, rgba(250, 247, 255, 0.96)) 55%,
+      color-mix(in srgb, var(--accent) 8%, rgba(247, 251, 249, 0.94))
     );
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
   box-shadow:
-    0 12px 28px rgba(20, 48, 44, 0.1),
-    0 0 18px color-mix(in srgb, var(--theme-glow) 55%, transparent);
+    0 14px 32px rgba(42, 26, 69, 0.14),
+    0 0 22px color-mix(in srgb, var(--theme-glow) 55%, transparent);
   pointer-events: none;
-  max-height: min(78%, 520px);
-  overflow: auto;
+  max-height: min(78%, 560px);
+  overflow: hidden;
   transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pipluxe-mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.pipluxe-mascot img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 24px rgba(42, 26, 69, 0.18),
+    0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, white);
+}
+
+.pipluxe-mascot-caption {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--theme-glow) 70%, transparent);
 }
 
 .theme-rail-label {
@@ -2414,9 +2443,19 @@ body {
   }
 
   .theme-rail {
-    width: 118px;
+    width: 112px;
     left: 4px;
-    padding: 8px 6px;
+    padding: 8px 6px 10px;
+  }
+
+  .pipluxe-mascot img {
+    width: 92px;
+    height: 92px;
+    border-radius: 14px;
+  }
+
+  .pipluxe-mascot-caption {
+    font-size: 0.72rem;
   }
 
   .tbr-sprite {

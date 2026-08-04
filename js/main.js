@@ -288,6 +288,7 @@
 
     var badge = document.getElementById("active-theme-badge");
     if (badge) {
+      badge.hidden = false;
       var line = (theme.line || [])
         .map(function (mon, i) {
           return (
