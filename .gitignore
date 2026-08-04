@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.log
+assets/cries/_candidates/
+assets/cries/_raw/
+_check.py

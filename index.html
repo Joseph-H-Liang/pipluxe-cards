@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pipluxe Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="theme-piplup">
+    <div class="app" id="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <p class="brand-name">Pipluxe Cards</p>
+            <p class="brand-sub">6-card pack · 3 to win</p>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="active-theme-badge" id="active-theme-badge" aria-label="Active theme"></div>
+          <div class="day-counter" id="dayCounter" title="Opens today">
+            <span class="day-counter-label">TODAY</span>
+            <strong class="day-counter-value" id="dayOpens">0</strong>
+            <span class="day-counter-paid">paid <span id="dayPaid">0</span></span>
+          </div>
+          <span id="playModeLabel" class="play-mode-label" hidden></span>
+        </div>
+
+        <div class="topbar-right">
+          <span id="modeHint" class="mode-hint">Space to start</span>
+        </div>
+      </header>
+
+      <main class="stage" id="stage">
+        <aside class="theme-rail" aria-label="Session theme">
+          <p class="theme-rail-label">Pipluxe</p>
+          <div class="theme-board" id="theme-board"></div>
+        </aside>
+
+        <div class="stage-main">
+          <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+
+          <div class="hex-board is-dim" id="hexBoard" aria-live="polite">
+            <div class="hex-center" id="hexCenter">
+              <p class="center-hype" id="centerHype"></p>
+              <p class="center-count" id="centerCount"></p>
+              <div class="center-result is-hidden" id="centerResult">
+                <p class="result-label" id="resultLabel"></p>
+                <p class="result-hand" id="resultHand"></p>
+              </div>
+            </div>
+
+            <div class="card-slot" data-slot="0" style="--i: 0"></div>
+            <div class="card-slot" data-slot="1" style="--i: 1"></div>
+            <div class="card-slot" data-slot="2" style="--i: 2"></div>
+            <div class="card-slot" data-slot="3" style="--i: 3"></div>
+            <div class="card-slot" data-slot="4" style="--i: 4"></div>
+            <div class="card-slot" data-slot="5" style="--i: 5"></div>
+          </div>
+
+            <div class="pack-zone" id="packZone">
+              <button type="button" class="pack is-idle" id="packBtn" aria-label="Open pack">
+                <span class="cutter" id="cutter" aria-hidden="true"></span>
+                <span class="pack-shell">
+                  <span class="pack-half pack-half--left">
+                    <span class="pack-face">
+                      <span class="pack-foil" aria-hidden="true"></span>
+                      <span class="pack-art" aria-hidden="true">
+                        <span class="pack-art-burst"></span>
+                        <span class="pack-art-orb"></span>
+                      </span>
+                      <span class="pack-title">BOOSTER</span>
+                      <span class="pack-set">PIPLUXE</span>
+                      <span class="pack-sub">TAP TO OPEN</span>
+                      <span class="pack-shine" aria-hidden="true"></span>
+                    </span>
+                  </span>
+                  <span class="pack-half pack-half--right">
+                    <span class="pack-face">
+                      <span class="pack-foil" aria-hidden="true"></span>
+                      <span class="pack-art" aria-hidden="true">
+                        <span class="pack-art-burst"></span>
+                        <span class="pack-art-orb"></span>
+                      </span>
+                      <span class="pack-title">BOOSTER</span>
+                      <span class="pack-set">PIPLUXE</span>
+                      <span class="pack-sub">TAP TO OPEN</span>
+                      <span class="pack-shine" aria-hidden="true"></span>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <p class="pack-cue" id="packCue">Open a pack — 3 matching cards wins</p>
+            </div>
+        </div>
+
+        <aside class="drought-rail" id="droughtBar" aria-label="Packs since last prize">
+          <p class="drought-title">Since last</p>
+          <div class="drought-grid" id="droughtGrid"></div>
+        </aside>
+
+        <div id="win-banner" class="win-banner" hidden aria-hidden="true">
+          <div class="win-banner-inner">
+            <img id="win-banner-sprite" class="win-banner-sprite" alt="" />
+            <div class="win-banner-text">
+              <span id="win-banner-call" class="win-banner-call"></span>
+              <span id="win-banner-prize" class="win-banner-prize"></span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dock">
+        <p class="dock-status" id="dockStatus">Ready when you are.</p>
+        <span class="dock-hints">0 odds · 9 log · O ops · 7 demo</span>
+      </footer>
+    </div>
+
+    <div id="gate" class="gate" aria-live="polite">
+      <section id="screen-attract" class="gate-screen is-active">
+        <p class="gate-eyebrow">PIPLUXE CARDS</p>
+        <h1 class="gate-brand">Pipluxe <span>Cards</span></h1>
+        <p class="gate-tagline">6-card pack · match 3 to win · surprise FREE play</p>
+        <div class="attract-hex" aria-hidden="true">
+          <i class="ah prize-sticker"></i>
+          <i class="ah prize-abyss"></i>
+          <i class="ah prize-pbpack"></i>
+          <i class="ah prize-funko"></i>
+          <i class="ah prize-chaos"></i>
+          <i class="ah prize-box"></i>
+          <span class="ah-bonus">+ FREE</span>
+        </div>
+        <div class="pulse-cta">
+          <span class="keycap">SPACE</span>
+          <span>or tap to start</span>
+        </div>
+        <p class="demo-toggle" id="demo-toggle" aria-live="polite">
+          <span class="keycap">7</span>
+          <span>Demo <strong id="demo-toggle-state">ON</strong></span>
+        </p>
+        <ul class="prize-legend">
+          <li><i class="swatch prize-sticker"></i> Sticker</li>
+          <li><i class="swatch prize-abyss"></i> Abyss</li>
+          <li><i class="swatch prize-pbpack"></i> PB/CB</li>
+          <li><i class="swatch prize-triple"></i> 3-Pack</li>
+          <li><i class="swatch prize-funko"></i> Funko</li>
+          <li><i class="swatch prize-bundle"></i> Bundle</li>
+          <li><i class="swatch prize-zacian"></i> Zacian</li>
+          <li><i class="swatch prize-chaos"></i> Chaos</li>
+          <li><i class="swatch prize-ascended"></i> Ascended</li>
+          <li><i class="swatch prize-tin"></i> Tin</li>
+          <li><i class="swatch prize-box"></i> Box</li>
+          <li><i class="swatch prize-bonus"></i> Free</li>
+        </ul>
+      </section>
+
+      <section id="screen-age" class="gate-screen">
+        <p class="gate-eyebrow">AGE CHECK</p>
+        <h2 class="gate-brand-sm">Pipluxe <span>Cards</span></h2>
+        <p class="gate-tagline" id="age-tagline">You must be 19 or older to play</p>
+        <div class="age-panel">
+          <p class="age-question" id="age-question">Are you 19 years of age or older?</p>
+          <div class="age-actions">
+            <button type="button" class="primary-btn" id="btn-age-yes">
+              YES · 19+
+            </button>
+            <button type="button" class="ghost-btn" id="btn-age-no">
+              NO
+            </button>
+          </div>
+          <p class="hint">Press <span class="keycap">1</span> for Yes · <span class="keycap">2</span> / Esc for No</p>
+          <p class="age-denied" id="age-denied" hidden>
+            Sorry — this attraction is for players 19+.
+          </p>
+        </div>
+      </section>
+
+      <section id="screen-tos" class="gate-screen">
+        <p class="gate-eyebrow">BEFORE YOU PLAY</p>
+        <h2 class="gate-brand-sm">Pipluxe <span>Cards</span></h2>
+        <p class="gate-tagline">Please read · press <span class="keycap">1</span> to agree &amp; continue</p>
+        <div class="tos-panel">
+          <div class="tos-scroll" id="tos-scroll" tabindex="0">
+            <h3>House rules</h3>
+            <ul class="tos-list">
+              <li><strong>Age requirement.</strong> Players must be 19 years of age or older. The operator may refuse play if age cannot be confirmed.</li>
+              <li><strong>Amusement only.</strong> This is a card-show amusement for sealed TCG product. Results are random within the posted odds.</li>
+              <li><strong>Play within your limits.</strong> Set a budget and stick to it. Do not play if it is illegal for you to do so where you are.</li>
+              <li><strong>All sales final.</strong> Opens are non-refundable once started. No cash refunds for stickers or prizes you do not want.</li>
+              <li><strong>No substitutions.</strong> You receive the prize shown (or today’s labeled stock for that prize tier). We do not swap for other product, cash, or store credit.</li>
+              <li><strong>Always a takeaway.</strong> Every open awards at least a sticker when you don’t hit a higher prize.</li>
+              <li><strong>Prize floor.</strong> The lowest product prize is a JP Abyss Eye pack. Higher tiers are listed in the odds tables.</li>
+              <li><strong>Free play.</strong> A FREE card may appear on a paid open (including with a win) at ~5%. It awards one free pack that does not consume a 5-pack slot. Free packs cannot award another FREE card.</li>
+              <li><strong>Operator decision final.</strong> Disputes, machine errors, or unclear outcomes are resolved by the event operator on site.</li>
+              <li><strong>Not affiliated.</strong> This attraction is an independent card-show amusement. It is not affiliated with, endorsed by, or sponsored by Nintendo, Creatures, GAME FREAK, The Pokémon Company, or related rights holders.</li>
+              <li><strong>Transparency.</strong> Live odds are listed below and available anytime with <span class="keycap">0</span>.</li>
+            </ul>
+
+            <h3>$5 Single open odds</h3>
+            <table class="odds-table tos-odds" id="tos-odds-single">
+              <thead>
+                <tr><th>Prize</th><th>Chance</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <p class="odds-note" id="tos-odds-note-single"></p>
+
+            <h3>5-for-$20 pack odds</h3>
+            <p class="odds-sub">Each of the five opens uses the pack table · free plays do not consume a slot</p>
+            <table class="odds-table tos-odds" id="tos-odds-pack">
+              <thead>
+                <tr><th>Prize</th><th>Chance</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <p class="odds-note" id="tos-odds-note-pack"></p>
+
+            <p class="tos-foot">
+              By pressing <strong>1</strong> you confirm you have read these rules and the odds, and you agree to play under them.
+            </p>
+          </div>
+          <div class="tos-actions">
+            <button type="button" class="primary-btn" id="btn-tos-agree">
+              I AGREE · PRESS 1
+            </button>
+            <p class="hint">Scroll for full odds · <span class="keycap">Esc</span> back</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-mode" class="gate-screen">
+        <p class="gate-eyebrow">CHOOSE A PLAY</p>
+        <h2 class="gate-brand-sm">Pipluxe <span>Cards</span></h2>
+        <p class="theme-pill" id="mode-theme-pill">PIPLUXE</p>
+        <p class="gate-tagline">Same odds · pick how many opens</p>
+        <div class="mode-grid">
+          <button type="button" class="mode-card" id="btn-single" data-mode="single">
+            <span class="mode-price">$5</span>
+            <span class="mode-title">Single Open</span>
+            <span class="mode-desc">One pack · match 3 to win</span>
+          </button>
+          <button type="button" class="mode-card featured" id="btn-pack" data-mode="pack">
+            <span class="mode-badge">BEST DEAL</span>
+            <span class="mode-price">$20</span>
+            <span class="mode-title">5-Pack</span>
+            <span class="mode-desc">5 opens · free plays free</span>
+          </button>
+        </div>
+        <p class="hint">Press <span class="keycap">1</span> or <span class="keycap">2</span> · Esc back</p>
+      </section>
+    </div>
+
+    <div id="result-overlay" class="result-overlay is-hidden" hidden>
+      <button type="button" class="result-card" id="resultCard" aria-label="Dismiss result">
+        <p class="result-eyebrow" id="resultEyebrow">YOU WON</p>
+        <div class="result-art" id="resultArt" aria-hidden="true"></div>
+        <h2 class="result-title" id="resultTitle">Booster Pack</h2>
+        <p class="result-handto" id="resultHandto">Hand them: 1 sealed booster pack</p>
+        <p class="result-next" id="resultNext">Click / Space to continue</p>
+      </button>
+    </div>
+
+    <div id="summary-overlay" class="overlay summary-overlay" hidden>
+      <div class="summary-card">
+        <p class="summary-eyebrow">5-PACK COMPLETE</p>
+        <h2>Here's what they won</h2>
+        <ul class="summary-list" id="summary-list"></ul>
+        <p class="summary-hand">Gather these prizes, then press for a new player.</p>
+        <button type="button" class="primary-btn" id="btn-summary-done">
+          DONE · NEW PLAYER
+        </button>
+      </div>
+    </div>
+
+    <div id="odds-overlay" class="overlay odds-overlay" hidden>
+      <div class="odds-card">
+        <header class="odds-header">
+          <div>
+            <p class="eyebrow">OPERATOR · PRESS 0 TO TOGGLE</p>
+            <h2>Odds &amp; Today's Stock</h2>
+          </div>
+          <button type="button" class="text-btn" id="btnCloseOdds">Close (0 / Esc)</button>
+        </header>
+        <div class="odds-layout">
+          <div class="odds-tables">
+            <section class="odds-section">
+              <h3>$5 Single · 1 open</h3>
+              <p class="odds-sub">Per paid open</p>
+              <table class="odds-table" id="odds-table-single">
+                <thead>
+                  <tr><th>Prize</th><th>Chance</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <p class="odds-note" id="oddsNoteSingle"></p>
+            </section>
+            <section class="odds-section">
+              <h3>$20 5-Pack · per open</h3>
+              <p class="odds-sub">Each of the 5 opens · free plays do not consume a slot</p>
+              <table class="odds-table" id="odds-table-pack">
+                <thead>
+                  <tr><th>Prize</th><th>Chance</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <p class="odds-note" id="oddsNotePack"></p>
+            </section>
+          </div>
+          <section class="odds-section stock-section">
+            <h3>Hand out today</h3>
+            <p class="odds-sub">Shown on wins · saved for the day · override labels if stock differs</p>
+            <div id="stockFields" class="stock-fields"></div>
+            <p class="stock-preview" id="stockPreview"></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="log-overlay" class="overlay log-overlay" hidden>
+      <div class="log-card">
+        <header class="odds-header">
+          <div>
+            <p class="eyebrow">OPERATOR · PRESS 9 TO TOGGLE</p>
+            <h2>Today's Results</h2>
+          </div>
+          <button type="button" class="text-btn" id="btnCloseLog">Close (9 / Esc)</button>
+        </header>
+        <div class="log-totals">
+          <section class="odds-section">
+            <h3>$5 Single opens</h3>
+            <table class="odds-table log-tier-table" id="log-table-single"></table>
+          </section>
+          <section class="odds-section">
+            <h3>5-pack sessions</h3>
+            <table class="odds-table log-tier-table" id="log-table-pack"></table>
+          </section>
+        </div>
+        <section class="log-activity">
+          <h3>Activity log</h3>
+          <p class="odds-sub">Newest first · 5-packs show tier totals + each open</p>
+          <div class="log-feed" id="logFeed"></div>
+        </section>
+      </div>
+    </div>
+
+    <aside id="operator" class="operator" hidden>
+      <header>
+        <strong>Operator</strong>
+        <button type="button" id="btnCloseOp" class="text-btn">Close (O)</button>
+      </header>
+      <div class="op-stats">
+        <div><span>Session opens</span><strong id="opSessionOpens">0</strong></div>
+        <div><span>Session paid</span><strong id="opSessionPaid">0</strong></div>
+        <div><span>Today opens</span><strong id="opDayOpens">0</strong></div>
+      </div>
+      <div class="op-money">
+        <div><span>Session $</span><strong id="opRevenue">$0.00</strong></div>
+        <div><span>Session COGS</span><strong id="opCogs">$0.00</strong></div>
+        <div><span>Session profit</span><strong id="opProfit" class="op-profit">$0.00</strong></div>
+        <div><span>Today $</span><strong id="opDayRevenue">$0.00</strong></div>
+        <div><span>Today COGS</span><strong id="opDayCogs">$0.00</strong></div>
+        <div><span>Today profit</span><strong id="opDayProfit" class="op-profit">$0.00</strong></div>
+      </div>
+      <p class="op-ev" id="opEvLine"></p>
+      <div class="op-wins" id="opWins"></div>
+      <div class="op-drought" id="opDrought"></div>
+      <div class="op-actions">
+        <button type="button" id="btnMute" class="op-btn">Mute sounds</button>
+        <button type="button" id="btnResetSession" class="op-btn">Reset session</button>
+        <button type="button" id="btnFullscreen" class="op-btn">Fullscreen</button>
+      </div>
+      <p class="op-note">
+        Attract → TOS → mode → open. Space = advance / open / dismiss.
+        O = operator. 0 = odds &amp; stock. 9 = day log. 7 = demo on/off.
+        Single = $5. 5-pack = $20. Free play = $0 revenue, no re-bonus.
+      </p>
+    </aside>
+
+    <script src="js/config.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/celebrate.js"></script>
+    <script src="js/ops.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
