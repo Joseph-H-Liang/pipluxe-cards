@@ -9,7 +9,7 @@ CM.THEMES = [
     blurb: "Sinnoh water starter",
     img: "assets/themes/piplup.png",
     gif: "assets/themes/piplup.gif",
-    cry: "assets/cries/piplup.ogg",
+    cry: "assets/cries/piplup.mp3",
     accent: "#a78bfa",
     accent2: "#7c3aed",
     glow: "rgba(167, 139, 250, 0.4)",
