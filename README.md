@@ -19,7 +19,7 @@ Double-click `start.bat` or open `index.html` in Chrome / Edge.
 | Prize | Value |
 |-------|------:|
 | Sticker | $0.25 |
-| JP Pack (floor) | $5 |
+| JP Pack (floor) | $3 COGS / $5 value |
 | Eng Pack | $8 |
 | PB 3-pack | $24 |
 | Choose a Pokémon Funko | $26 |

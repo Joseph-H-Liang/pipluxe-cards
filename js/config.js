@@ -65,7 +65,7 @@ CM.PRIZES = [
     short: "JP PACK",
     handTo: "Hand them: 1 JP Abyss Eye pack",
     blurb: "Abyss Eye",
-    cogs: 5,
+    cogs: 3,
     msrp: 5,
     cssClass: "prize-abyss",
     rarity: "uncommon",
@@ -190,22 +190,23 @@ CM.PRIZE_DISPLAY_ORDER = [
 /** Rough weights among non-sticker wins ($5 single open). */
 CM.WIN_WEIGHTS = {
   abyss: 2200,
-  pbpack: 900,
-  triple: 180,
-  funko: 150,
-  bundle: 40,
-  zacian: 50,
-  chaos: 18,
-  ascended: 12,
-  tin: 20,
-  box: 5,
+  pbpack: 1000,
+  triple: 200,
+  funko: 160,
+  bundle: 45,
+  zacian: 55,
+  chaos: 20,
+  ascended: 14,
+  tin: 24,
+  box: 6,
 };
 
 /**
  * Chance the open is a sticker (consolation).
- * Tuned with WIN/PACKAGE/FREE tables for ~20% margin on $5 / 5-for-$20.
+ * Tuned with WIN/PACKAGE/FREE for ~20% margin on $5 / 5-for-$20
+ * after JP Pack COGS cut to $3 (softer hit rate than the $5-COGS table).
  */
-CM.STICKER_CHANCE = 0.635;
+CM.STICKER_CHANCE = 0.606;
 CM.MISS_CHANCE = CM.STICKER_CHANCE; // legacy alias
 
 /**
@@ -213,38 +214,38 @@ CM.MISS_CHANCE = CM.STICKER_CHANCE; // legacy alias
  * Silent guarantee injects JP Pack separately (not shown in UI copy).
  */
 CM.PACKAGE_WEIGHTS = {
-  sticker: 7900,
-  abyss: 920,
-  pbpack: 430,
-  triple: 115,
-  funko: 95,
-  bundle: 38,
-  zacian: 42,
-  chaos: 16,
-  ascended: 11,
-  tin: 20,
-  box: 5,
+  sticker: 7450,
+  abyss: 980,
+  pbpack: 500,
+  triple: 155,
+  funko: 125,
+  bundle: 50,
+  zacian: 58,
+  chaos: 22,
+  ascended: 15,
+  tin: 28,
+  box: 8,
 };
 
 CM.FREE_WEIGHTS = {
-  sticker: 7900,
-  abyss: 920,
-  pbpack: 430,
-  triple: 115,
-  funko: 95,
-  bundle: 38,
-  zacian: 42,
-  chaos: 16,
-  ascended: 11,
-  tin: 20,
-  box: 5,
+  sticker: 7450,
+  abyss: 980,
+  pbpack: 500,
+  triple: 155,
+  funko: 125,
+  bundle: 50,
+  zacian: 58,
+  chaos: 22,
+  ascended: 15,
+  tin: 28,
+  box: 8,
 };
 
 /** Near-miss tease drama — any prize tier can be the almost-win. */
 CM.TEASE_WEIGHTS = {
   abyss: 18,
   pbpack: 18,
-  triple: 14,
+  triple: 16,
   funko: 14,
   bundle: 10,
   zacian: 10,
